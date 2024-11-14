@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun, Sayang!</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f0;
+            background-image: url('https://www.transparenttextures.com/patterns/bedge-grunge.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            overflow: hidden;
+            animation: backgroundFade 2s ease-in-out;
+        }
+
+        @keyframes backgroundFade {
+            0% {
+                background-color: #ffe6f0;
+                background-image: url('https://www.transparenttextures.com/patterns/bedge-grunge.png');
+            }
+            100% {
+                background-color: #ffcccb;
+                background-image: radial-gradient(circle, rgba(255, 99, 71, 0.3), rgba(255, 182, 193, 0.3));
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            animation: fadeIn 1s ease;
+            position: relative;
+        }
+
+        h1, p {
+            margin: 10px 0;
+        }
+
+        .nav-btn, .choice-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #e57373;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .nav-btn:hover, .choice-btn:hover {
+            background-color: #ef5350;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #final-message {
+            display: none;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="pageContent">
+        <!-- Konten akan diisi oleh JavaScript -->
+    </div>
+
+    <script>
+        const pages = [
+            "Selamat Ulang Tahun, Sayang!",
+            "Hari ini adalah hari yang spesial, sama seperti dirimu.",
+            "Aku berharap semua kebahagiaan dan cinta menyertaimu.",
+            "Semoga semua impianmu tercapai dan senyum selalu menghiasi wajahmu.",
+            "Terima kasih sudah menjadi bagian indah dalam hidupku ❤️"
+        ];
+
+        const images = [
+            "https://example.com/path/to/sticker1.png",   // Gambar Stiker 1
+            "https://example.com/path/to/sticker2.png",   // Gambar Stiker 2
+            "https://example.com/path/to/sticker3.png",   // Gambar Stiker 3
+            "https://example.com/path/to/sticker4.png",   // Gambar Stiker 4
+            "https://example.com/path/to/sticker5.png"    // Gambar Stiker 5
+        ];
+
+        let currentPage = 0;
+
+        function showPage() {
+            const pageContent = document.getElementById("pageContent");
+
+            if (currentPage < pages.length) {
+                pageContent.innerHTML = `
+                    <h1>${pages[currentPage]}</h1>
+                    <div class="image-container">
+                        <img src="${images[currentPage]}" alt="Stiker Lucu">
+                    </div>
+                    <a class="nav-btn" onclick="nextPage()">Lanjut</a>
+                `;
+            } else {
+                pageContent.innerHTML = `
+                    <h1>Apakah kamu ingin menerima hadiah spesial?</h1>
+                    <button class="choice-btn" onclick="giveGift()">Ya, mau hadiah 🎁</button>
+                    <button class="choice-btn" onclick="declineGift()">Tidak, terima kasih 🙏</button>
+                    <div id="final-message"></div>
+                `;
+            }
+        }
+
+        function nextPage() {
+            currentPage++;
+            showPage();
+        }
+
+        function giveGift() {
+            const finalMessage = document.getElementById("final-message");
+            finalMessage.style.display = "block";
+            finalMessage.innerHTML = "🎉 Kamu akan menerima hadiah spesial! 🎉";
+        }
+
+        function declineGift() {
+            const finalMessage = document.getElementById("final-message");
+            finalMessage.style.display = "block";
+            finalMessage.innerHTML = "Tidak apa-apa, semoga hari ini tetap berkesan untukmu ❤️";
+        }
+
+        showPage();
+    </script>
+</body>
+</html>
